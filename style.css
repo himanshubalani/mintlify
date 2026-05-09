@@ -78,10 +78,22 @@ body {
   top: var(--credit-bar-height);
   left: 0;
   right: 0;
-  z-index: 50;
-  padding: 1rem 1.5rem; /* Equivalent to py-4 px-6 */
+  z-index: 100;
+  padding: 1rem 1.5rem;
   width: 100%;
-}
+  backdrop-filter: blur(0px);
+  animation: blur-on-scroll linear both;
+  animation-timeline: scroll(); /* Tracks the page scroll */
+  animation-range: 0px 100px;  /* Effect starts at 0px and finishes at 100px scroll */
+  }
+  
+  @keyframes blur-on-scroll {
+    to {
+      background-color: var(--soft-light-b);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  }
 
 /* Nav Bar Wrapper */
 .nav-bar-container {
@@ -215,7 +227,7 @@ white-space-collapse: collapse;
 	padding: 4px 4px;
 	top: 120px;
 	width: fit-content;
-	background-color: light-dark(lab(2.42579% -.165291 -.470081/.15), lab(100 0 0 / 0.5));
+	background-color: light-dark(lab(2.42579% -.165291 -.470081/.15), lab(100 0 0 / 0.15));
 	border-radius: 9999px;
 	line-height: 1.5;
 	text-rendering: optimizeLegibility;
@@ -224,7 +236,7 @@ white-space-collapse: collapse;
 	cursor: pointer;
 }
 .feature-announcement:hover{
-	background-color: light-dark(lab(100 0 0 / 0.05), lab(100 0 0 / 0.15));
+	background-color: light-dark(lab(100 0 0 / 0.05), lab(100 0 0 / 0.05));
   padding: 4px 4px;
   border-radius: 99px;
   text-decoration: none;
@@ -271,7 +283,7 @@ white-space-collapse: collapse;
 	left: 50%;
 	padding: 2px;
 	width: 100%;
-	background-color: light-dark(lab(100 0 0 /0.15), lab(100 0 0 / 0.5));
+	background-color: light-dark(lab(100 0 0 /0.15), lab(100 0 0 / 0.15));
 	border: 1px solid ;
 	border-color: var(--soft-light);
 	border-radius: 9999px;
@@ -320,4 +332,34 @@ input:focus {
 	mask: linear-gradient(to top, #000 10%, transparent 80%) no-repeat;
   -webkit-mask: linear-gradient(to top, #000 10%, transparent 80%) no-repeat;
 }
+.company-list-container {
+	margin-top: 0;
+	padding: 72px 32px 144px ;
+}
 
+.company-list {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 32px;
+
+	max-width: 64rem;
+	margin: 0 auto;
+	align-items: center;
+	justify-items: center;
+}
+
+.company {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 64px;
+}
+
+.company-logo {
+	max-width: 140px;
+	width: 100%;
+	height: auto;
+	opacity: 1;
+	transition: opacity 0.2s ease;
+}
