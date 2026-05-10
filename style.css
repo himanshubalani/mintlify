@@ -8,7 +8,7 @@
     --border: #E5E7EB;
     --border-soft: rgba(0, 0, 0, 0.1);
     --credit-bar-height: 25px;
-    --brand-light: #18E299;
+    --brand-light: #0c8c5e;
     --text-main: #08090A;
     --text-soft: #4B5563;
     --text-muted: #9CA3AF;
@@ -641,6 +641,8 @@ input:focus {
 
 /* Main Card (Panel) */
 .story-panel {
+	margin-left: auto;
+	margin-right: auto;
   position: relative;
   width: 100%;
   max-width: 66.5rem;
